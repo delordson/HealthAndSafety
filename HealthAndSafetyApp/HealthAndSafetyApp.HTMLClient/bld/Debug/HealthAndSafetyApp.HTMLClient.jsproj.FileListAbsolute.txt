@@ -1,0 +1,4 @@
+C:\BitBucket\Health&SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\bin\Debug\LSResourceGeneratorsTask.mcs
+C:\BitBucket\Health&SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\bin\Debug\LSClientCodeGeneratorsTask.mcs
+C:\BitBucket\Health&SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\bin\Debug\LSResourceGeneratorsTask.mcs
+C:\BitBucket\Health&SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\bin\Debug\LSClientCodeGeneratorsTask.mcs

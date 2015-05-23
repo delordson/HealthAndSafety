@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Properties\Client.lsml" Checksum="638F1D2D3241557375B4035FF4B9006F770DCDF87F6C7D41B5FF7F2792FD967D" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Properties\Proxies.lsml" Checksum="BDF00E275ACDB8931940030C322093CFE3B044B866694E9946C288B92B455F35" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\AddEditEmployee.lsml" Checksum="ECCD60984C9BB24B341DD62D02C48501963DA8D74E18471D70CEF65C8DD7B163" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\AddEditHealthAndSafetyIncident.lsml" Checksum="D3E17BFAA9D37F7FD6233EC58A729C6418D580F572619697EF32736A5F037D0F" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\AddEditIncidentStatus.lsml" Checksum="605BF77EF2946CAA874C45A2E175D225493E1ED439DA3D3BB9B0848F70E0BE16" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\AddEditInjuryType.lsml" Checksum="7A951CDE0332686065227D479B1E0A5A7EDE5D6C59A7633DAF15B029D9BE26F0" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\AddEditPersonType.lsml" Checksum="2128771F15F726134A721575AFAC291957CA1D22764F8FCA0E4DC53ACFA8290C" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowseEmployees.lsml" Checksum="5B76C6352E01B4A27BC07E557CCC752AFA7666EC3BF8DB2A28B6912F7F4EDA4A" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowseHealthAndSafetyIncidents.lsml" Checksum="281AC03C3F69C0D40B31C776C2E75DD32AA09F0CD6FDA42CD325ADE336FB8B4F" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowseIncidentStatuses.lsml" Checksum="3B63B6F2EE58EAB6E77D2CF773DD996B8CAFF476D15FFAC4332AE569D132C3F2" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowseInjuryTypes.lsml" Checksum="20C79A24E1780FC119DB0C80941EF3E1D00BF191CB89D3E9B715D839AB43B397" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowsePersonTypes.lsml" Checksum="36E3ADF369327FE6678EA82217ED64C73E88BEA444CBA5A7902B0726D3672508" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\Home.lsml" Checksum="47068D33BE8C98383C1BE964B8F1DDF8084A52065FA92B312F22E8ABD86702B0" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowseIncidentsReportedToMe.lsml" Checksum="122F6DB761F081CC3DDA8BC24170FFB9C9FAF3854CE2A52E4B722CB66C1D6EAD" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowseOpenIncidents.lsml" Checksum="340D796AA496FBDD646210DD8B169178DC9D9F7BAAE8B9B70625463FA9935677" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\BrowseIncidentOutcomes.lsml" Checksum="E7B0A88E93A43AC24FB42DCD8A3F575559B44A232F4BCC75C5F8D2148999366E" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.HTMLClient\Screens\AddEditIncidentOutcome.lsml" Checksum="796AEBECD0AB9BF431C2EC40E81D51EFA33821C5C84A3B3B801486A592CEE327" />
+  </Documents>
+</ModelDocumentManifest>

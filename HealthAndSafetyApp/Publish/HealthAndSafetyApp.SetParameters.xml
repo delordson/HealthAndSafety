@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="DatabaseServer" value="" />
+  <setParameter name="DatabaseName" value="HealthAndSafetyAppData" />
+  <setParameter name="DatabaseUserName" value="" />
+  <setParameter name="DatabaseUserPassword" value="" />
+  <setParameter name="HealthAndSafetyApp_IisWebApplication" value="Default Web Site/HealthAndSafetyApp" />
+</parameters>

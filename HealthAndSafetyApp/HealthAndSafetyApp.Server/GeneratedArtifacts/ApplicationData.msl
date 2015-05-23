@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="ApplicationData" StorageEntityContainer="ApplicationDataStore">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Current" ColumnName="Current" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HealthAndSafetyIncidents">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.HealthAndSafetyIncident)">
+        <MappingFragment StoreEntitySet="HealthAndSafetyIncidents">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="HealthAndSafetyIncident_Employee1" ColumnName="HealthAndSafetyIncident_Employee1" />
+          <ScalarProperty Name="IncidentDate" ColumnName="IncidentDate" />
+          <ScalarProperty Name="IncidentDescription" ColumnName="IncidentDescription" />
+          <ScalarProperty Name="IncidentStatus_HealthAndSafetyIncident" ColumnName="IncidentStatus_HealthAndSafetyIncident" />
+          <ScalarProperty Name="HappenedAtWork" ColumnName="HappenedAtWork" />
+          <ScalarProperty Name="PersonsInjured" ColumnName="PersonsInjured" />
+          <ScalarProperty Name="HealthAndSafetyIncident_Employee" ColumnName="HealthAndSafetyIncident_Employee" />
+          <ScalarProperty Name="TargetInvestigationDate" ColumnName="TargetInvestigationDate" />
+          <ScalarProperty Name="IncidentLocation" ColumnName="IncidentLocation" />
+          <ScalarProperty Name="DateReported" ColumnName="DateReported" />
+          <ScalarProperty Name="AdditionalComments" ColumnName="AdditionalComments" />
+          <ScalarProperty Name="ImmediateAction" ColumnName="ImmediateAction" />
+          <ScalarProperty Name="InvestigationStart" ColumnName="InvestigationStart" />
+          <ScalarProperty Name="RootCauseIdentified" ColumnName="RootCauseIdentified" />
+          <ScalarProperty Name="PreventativeAction" ColumnName="PreventativeAction" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncidentOutcomes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.IncidentOutcome)">
+        <MappingFragment StoreEntitySet="IncidentOutcomes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Outcome" ColumnName="Outcome" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncidentPersons">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.IncidentPerson)">
+        <MappingFragment StoreEntitySet="IncidentPersons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IncidentPersonSurname" ColumnName="IncidentPersonSurname" />
+          <ScalarProperty Name="IncidentPersonForename" ColumnName="IncidentPersonForename" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="IncidentPerson_PersonType" ColumnName="IncidentPerson_PersonType" />
+          <ScalarProperty Name="InjuryType_IncidentPerson" ColumnName="InjuryType_IncidentPerson" />
+          <ScalarProperty Name="IncidentOutcome_IncidentPerson" ColumnName="IncidentOutcome_IncidentPerson" />
+          <ScalarProperty Name="WorkDaysLost" ColumnName="WorkDaysLost" />
+          <ScalarProperty Name="IncidentPerson_HealthAndSafetyIncident" ColumnName="IncidentPerson_HealthAndSafetyIncident" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncidentStatuses">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.IncidentStatus)">
+        <MappingFragment StoreEntitySet="IncidentStatuses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncidentWitnesses">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.IncidentWitness)">
+        <MappingFragment StoreEntitySet="IncidentWitnesses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Forename" ColumnName="Forename" />
+          <ScalarProperty Name="IncidentWitness_PersonType" ColumnName="IncidentWitness_PersonType" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="Statement" ColumnName="Statement" />
+          <ScalarProperty Name="StatementDate" ColumnName="StatementDate" />
+          <ScalarProperty Name="IncidentWitness_HealthAndSafetyIncident" ColumnName="IncidentWitness_HealthAndSafetyIncident" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InjuryTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.InjuryType)">
+        <MappingFragment StoreEntitySet="InjuryTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Injury" ColumnName="Injury" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.PersonType)">
+        <MappingFragment StoreEntitySet="PersonTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeOfPerson" ColumnName="TypeOfPerson" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

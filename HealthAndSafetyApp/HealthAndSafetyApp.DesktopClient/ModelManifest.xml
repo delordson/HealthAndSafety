@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.DesktopClient\Properties\Client.lsml" Checksum="ABB0EC2793FC58E06E35FD1C5276D1F24067D8E28D5617A59A47BF40F843376F" />
+    <Document FullPath="C:\BitBucket\Health&amp;SafetyApp\HealthAndSafetyApp\HealthAndSafetyApp.DesktopClient\Properties\Proxies.lsml" Checksum="92CDCABA826D6A8E67A5B88F9E6C3A570DEE878DE5AC96ED48A688F856F74277" />
+  </Documents>
+</ModelDocumentManifest>

@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ApplicationDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ApplicationDataStore">
+    <EntitySet Name="Employees" EntityType="ApplicationDataStore.Employee" store:Type="Tables" Schema="dbo" Table="Employees" />
+    <EntitySet Name="HealthAndSafetyIncidents" EntityType="ApplicationDataStore.HealthAndSafetyIncident" store:Type="Tables" Schema="dbo" Table="HealthAndSafetyIncidents" />
+    <EntitySet Name="IncidentOutcomes" EntityType="ApplicationDataStore.IncidentOutcome" store:Type="Tables" Schema="dbo" Table="IncidentOutcomes" />
+    <EntitySet Name="IncidentPersons" EntityType="ApplicationDataStore.IncidentPerson" store:Type="Tables" Schema="dbo" Table="IncidentPersons" />
+    <EntitySet Name="IncidentStatuses" EntityType="ApplicationDataStore.IncidentStatus" store:Type="Tables" Schema="dbo" Table="IncidentStatuses" />
+    <EntitySet Name="IncidentWitnesses" EntityType="ApplicationDataStore.IncidentWitness" store:Type="Tables" Schema="dbo" Table="IncidentWitnesses" />
+    <EntitySet Name="InjuryTypes" EntityType="ApplicationDataStore.InjuryType" store:Type="Tables" Schema="dbo" Table="InjuryTypes" />
+    <EntitySet Name="PersonTypes" EntityType="ApplicationDataStore.PersonType" store:Type="Tables" Schema="dbo" Table="PersonTypes" />
+    <AssociationSet Name="HealthAndSafetyIncident_Employee" Association="ApplicationDataStore.HealthAndSafetyIncident_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet Name="HealthAndSafetyIncident_Employee1" Association="ApplicationDataStore.HealthAndSafetyIncident_Employee1">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentPerson_HealthAndSafetyIncident" Association="ApplicationDataStore.IncidentPerson_HealthAndSafetyIncident">
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentWitness_HealthAndSafetyIncident" Association="ApplicationDataStore.IncidentWitness_HealthAndSafetyIncident">
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+      <End Role="IncidentWitness" EntitySet="IncidentWitnesses" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentStatus_HealthAndSafetyIncident" Association="ApplicationDataStore.IncidentStatus_HealthAndSafetyIncident">
+      <End Role="IncidentStatus" EntitySet="IncidentStatuses" />
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentOutcome_IncidentPerson" Association="ApplicationDataStore.IncidentOutcome_IncidentPerson">
+      <End Role="IncidentOutcome" EntitySet="IncidentOutcomes" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="InjuryType_IncidentPerson" Association="ApplicationDataStore.InjuryType_IncidentPerson">
+      <End Role="InjuryType" EntitySet="InjuryTypes" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentPerson_PersonType" Association="ApplicationDataStore.IncidentPerson_PersonType">
+      <End Role="PersonType" EntitySet="PersonTypes" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentWitness_PersonType" Association="ApplicationDataStore.IncidentWitness_PersonType">
+      <End Role="PersonType" EntitySet="PersonTypes" />
+      <End Role="IncidentWitness" EntitySet="IncidentWitnesses" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Current" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="HealthAndSafetyIncident">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Reference" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="IncidentDate" Type="datetime" Nullable="false" />
+    <Property Name="IncidentDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="HappenedAtWork" Type="bit" Nullable="false" />
+    <Property Name="PersonsInjured" Type="bit" Nullable="false" />
+    <Property Name="TargetInvestigationDate" Type="datetime" Nullable="false" />
+    <Property Name="IncidentLocation" Type="nvarchar" MaxLength="255" />
+    <Property Name="DateReported" Type="datetime" />
+    <Property Name="AdditionalComments" Type="nvarchar(max)" />
+    <Property Name="ImmediateAction" Type="nvarchar(max)" />
+    <Property Name="InvestigationStart" Type="datetime" />
+    <Property Name="RootCauseIdentified" Type="nvarchar(max)" />
+    <Property Name="PreventativeAction" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="HealthAndSafetyIncident_Employee" Type="int" Nullable="false" />
+    <Property Name="HealthAndSafetyIncident_Employee1" Type="int" Nullable="false" />
+    <Property Name="IncidentStatus_HealthAndSafetyIncident" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IncidentOutcome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Outcome" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="IncidentPerson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IncidentPersonSurname" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="IncidentPersonForename" Type="nvarchar" MaxLength="255" />
+    <Property Name="Occupation" Type="nvarchar" MaxLength="255" />
+    <Property Name="WorkDaysLost" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="IncidentPerson_HealthAndSafetyIncident" Type="int" Nullable="false" />
+    <Property Name="IncidentOutcome_IncidentPerson" Type="int" Nullable="false" />
+    <Property Name="InjuryType_IncidentPerson" Type="int" Nullable="false" />
+    <Property Name="IncidentPerson_PersonType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IncidentStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="StatusType" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="IncidentWitness">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Forename" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="255" />
+    <Property Name="Statement" Type="nvarchar" MaxLength="255" />
+    <Property Name="StatementDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="IncidentWitness_HealthAndSafetyIncident" Type="int" Nullable="false" />
+    <Property Name="IncidentWitness_PersonType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InjuryType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Injury" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="PersonType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TypeOfPerson" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <Association Name="HealthAndSafetyIncident_Employee">
+    <End Role="Employee" Type="ApplicationDataStore.Employee" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="HealthAndSafetyIncident" Type="ApplicationDataStore.HealthAndSafetyIncident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HealthAndSafetyIncident">
+        <PropertyRef Name="HealthAndSafetyIncident_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HealthAndSafetyIncident_Employee1">
+    <End Role="Employee" Type="ApplicationDataStore.Employee" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="HealthAndSafetyIncident" Type="ApplicationDataStore.HealthAndSafetyIncident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HealthAndSafetyIncident">
+        <PropertyRef Name="HealthAndSafetyIncident_Employee1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentPerson_HealthAndSafetyIncident">
+    <End Role="HealthAndSafetyIncident" Type="ApplicationDataStore.HealthAndSafetyIncident" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="IncidentPerson" Type="ApplicationDataStore.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthAndSafetyIncident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="IncidentPerson_HealthAndSafetyIncident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentWitness_HealthAndSafetyIncident">
+    <End Role="HealthAndSafetyIncident" Type="ApplicationDataStore.HealthAndSafetyIncident" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="IncidentWitness" Type="ApplicationDataStore.IncidentWitness" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthAndSafetyIncident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentWitness">
+        <PropertyRef Name="IncidentWitness_HealthAndSafetyIncident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentStatus_HealthAndSafetyIncident">
+    <End Role="IncidentStatus" Type="ApplicationDataStore.IncidentStatus" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="HealthAndSafetyIncident" Type="ApplicationDataStore.HealthAndSafetyIncident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncidentStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HealthAndSafetyIncident">
+        <PropertyRef Name="IncidentStatus_HealthAndSafetyIncident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentOutcome_IncidentPerson">
+    <End Role="IncidentOutcome" Type="ApplicationDataStore.IncidentOutcome" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="IncidentPerson" Type="ApplicationDataStore.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncidentOutcome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="IncidentOutcome_IncidentPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InjuryType_IncidentPerson">
+    <End Role="InjuryType" Type="ApplicationDataStore.InjuryType" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="IncidentPerson" Type="ApplicationDataStore.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InjuryType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="InjuryType_IncidentPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentPerson_PersonType">
+    <End Role="PersonType" Type="ApplicationDataStore.PersonType" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="IncidentPerson" Type="ApplicationDataStore.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="IncidentPerson_PersonType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentWitness_PersonType">
+    <End Role="PersonType" Type="ApplicationDataStore.PersonType" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="IncidentWitness" Type="ApplicationDataStore.IncidentWitness" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentWitness">
+        <PropertyRef Name="IncidentWitness_PersonType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

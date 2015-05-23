@@ -1,0 +1,1814 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
+  Name="LightSwitchApplication.HealthAndSafetyApp.DesktopClient"
+  TargetPlatform="RichClient"
+  Version="1.0.0.0"
+  DefaultNavigationItem="!module/NavigationItems[Tasks]"
+  Shell="Microsoft.LightSwitch.Cosmopolitan:CosmopolitanShell"
+  Theme="Microsoft.LightSwitch.Cosmopolitan:CosmopolitanTheme" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <Application.Attributes>
+    <ModuleNamespace
+      Namespace="LightSwitchApplication" />
+    <Partial
+      IsPrimary="True" />
+  </Application.Attributes>
+  <EntityContainerGroup
+    Name="DataWorkspace">
+    <EntityContainerGroupProperty
+      Name="SecurityData"
+      EntityContainer="Microsoft.LightSwitch.Security:SecurityData">
+      <EntityContainerGroupProperty.Attributes>
+        <Generated />
+        <DisplayName
+          Value="Security Data" />
+        <Description
+          Value="Service that provides access to security-related data." />
+      </EntityContainerGroupProperty.Attributes>
+    </EntityContainerGroupProperty>
+    <EntityContainerGroupProperty
+      Name="ApplicationData"
+      EntityContainer="ApplicationData" />
+  </EntityContainerGroup>
+  <Permission
+    Name="CanEditEmployees">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Employees" />
+      <Description
+        Value="Can Edit Employees" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditHealthAndSafetyIncidents">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Health And Safety Incidents" />
+      <Description
+        Value="Can Edit Health And Safety Incidents" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditIncidentOutcomes">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Incident Outcomes" />
+      <Description
+        Value="Can Edit Incident Outcomes" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditIncidentPersons">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Incident Persons" />
+      <Description
+        Value="Can Edit Incident Persons" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditIncidentStatuses">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Incident Statuses" />
+      <Description
+        Value="Can Edit Incident Statuses" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditIncidentWitnesses">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Incident Witnesses" />
+      <Description
+        Value="Can Edit Incident Witnesses" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditInjuryTypes">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Injury Types" />
+      <Description
+        Value="Can Edit Injury Types" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditPersonTypes">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Person Types" />
+      <Description
+        Value="Can Edit Person Types" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditFurtherActions">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Further Actions" />
+      <Description
+        Value="Can Edit Further Actions" />
+    </Permission.Attributes>
+  </Permission>
+  <GlobalAttributeGroup
+    Name="LightSwitchServiceApplicationGroup">
+    <GlobalAttributeGroup.Attributes>
+      <AutomaticDisplayName
+        Expression="(\p{Ll})(\p{Lu})|_+"
+        Replacement="$1 $2" />
+    </GlobalAttributeGroup.Attributes>
+  </GlobalAttributeGroup>
+  <EntityType
+    Name="Employee">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="UserName"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FirstName"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="50" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastName"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="50" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Current"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Email"
+        PropertyType="Microsoft.LightSwitch.Extensions:EmailAddress">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="HealthAndSafetyIncidents"
+        Association="HealthAndSafetyIncident_Employee"
+        FromEnd="Employee"
+        ToEnd="HealthAndSafetyIncident" />
+      <NavigationProperty
+        Name="ReportedByHealthAndSafetyIncidents"
+        Association="HealthAndSafetyIncident_Employee1"
+        FromEnd="Employee"
+        ToEnd="HealthAndSafetyIncident" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="HealthAndSafetyIncident">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Reference"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="ReportedBy"
+        Association="HealthAndSafetyIncident_Employee1"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="Employee" />
+      <EntityProperty
+        Name="IncidentDate"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="IncidentDescription"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="IncidentStatus"
+        Association="IncidentStatus_HealthAndSafetyIncident"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="IncidentStatus" />
+      <EntityProperty
+        Name="HappenedAtWork"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="PersonsInjured"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="IncidentWitnesses"
+        Association="IncidentWitness_HealthAndSafetyIncident"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="IncidentWitness" />
+      <NavigationProperty
+        Name="ReportedTo"
+        Association="HealthAndSafetyIncident_Employee"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="Employee" />
+      <EntityProperty
+        Name="TargetInvestigationDate"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="IncidentLocation"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="DateReported"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="AdditionalComments"
+        PropertyType=":String?" />
+      <EntityProperty
+        Name="ImmediateAction"
+        PropertyType=":String?" />
+      <NavigationProperty
+        Name="IncidentPersons"
+        Association="IncidentPerson_HealthAndSafetyIncident"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="IncidentPerson" />
+      <EntityProperty
+        Name="InvestigationStart"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RootCauseIdentified"
+        PropertyType=":String?" />
+      <EntityProperty
+        Name="PreventativeAction"
+        PropertyType=":String?" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="IncidentOutcome">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Outcome"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="IncidentPerson"
+        Association="IncidentOutcome_IncidentPerson"
+        FromEnd="IncidentOutcome"
+        ToEnd="IncidentPerson" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="IncidentPerson">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="IncidentPersonSurname"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="IncidentPersonForename"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Occupation"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="PersonType"
+        Association="IncidentPerson_PersonType"
+        FromEnd="IncidentPerson"
+        ToEnd="PersonType" />
+      <NavigationProperty
+        Name="InjuryType"
+        Association="InjuryType_IncidentPerson"
+        FromEnd="IncidentPerson"
+        ToEnd="InjuryType" />
+      <NavigationProperty
+        Name="IncidentOutcomes"
+        Association="IncidentOutcome_IncidentPerson"
+        FromEnd="IncidentPerson"
+        ToEnd="IncidentOutcome" />
+      <EntityProperty
+        Name="WorkDaysLost"
+        PropertyType=":Int32">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+          <Range
+            Minimum="0" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="HealthAndSafetyIncident"
+        Association="IncidentPerson_HealthAndSafetyIncident"
+        FromEnd="IncidentPerson"
+        ToEnd="HealthAndSafetyIncident" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="IncidentStatus">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Status"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="StatusType"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <SupportedValue
+            DisplayName="Open"
+            Value="O" />
+          <SupportedValue
+            DisplayName="Closed"
+            Value="C" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="HealthAndSafetyIncident"
+        Association="IncidentStatus_HealthAndSafetyIncident"
+        FromEnd="IncidentStatus"
+        ToEnd="HealthAndSafetyIncident" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="IncidentWitness">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Surname"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Forename"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="PersonType"
+        Association="IncidentWitness_PersonType"
+        FromEnd="IncidentWitness"
+        ToEnd="PersonType" />
+      <EntityProperty
+        Name="Phone"
+        PropertyType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="EMail"
+        PropertyType="Microsoft.LightSwitch.Extensions:EmailAddress?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Statement"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="StatementDate"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="HealthAndSafetyIncident"
+        Association="IncidentWitness_HealthAndSafetyIncident"
+        FromEnd="IncidentWitness"
+        ToEnd="HealthAndSafetyIncident" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="InjuryType">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Injury"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="IncidentPersons"
+        Association="InjuryType_IncidentPerson"
+        FromEnd="InjuryType"
+        ToEnd="IncidentPerson" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="PersonType">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="TypeOfPerson"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="IncidentPersons"
+        Association="IncidentPerson_PersonType"
+        FromEnd="PersonType"
+        ToEnd="IncidentPerson" />
+      <NavigationProperty
+        Name="IncidentWitnesses"
+        Association="IncidentWitness_PersonType"
+        FromEnd="PersonType"
+        ToEnd="IncidentWitness" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="ApplicationData"
+    IsIntrinsic="True">
+    <EntityContainer.Attributes>
+      <Partial
+        IsPrimary="True" />
+    </EntityContainer.Attributes>
+    <SubmitOperation
+      Name="SaveChanges" />
+    <EntitySet
+      Name="Employees"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Employee" />
+    <QueryOperation
+      Name="Employees_Single"
+      ReturnType="Employee">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Employees" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Employees_SingleOrDefault"
+      ReturnType="Employee">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Employees" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="HealthAndSafetyIncident_Employees"
+      Association="HealthAndSafetyIncident_Employee">
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+      <AssociationSetEnd
+        Name="Employee"
+        EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet
+      Name="HealthAndSafetyIncident_Employee1Set"
+      Association="HealthAndSafetyIncident_Employee1">
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+      <AssociationSetEnd
+        Name="Employee"
+        EntitySet="Employees" />
+    </AssociationSet>
+    <EntitySet
+      Name="HealthAndSafetyIncidents"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="HealthAndSafetyIncident" />
+    <QueryOperation
+      Name="HealthAndSafetyIncidents_Single"
+      ReturnType="HealthAndSafetyIncident">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="HealthAndSafetyIncidents_SingleOrDefault"
+      ReturnType="HealthAndSafetyIncident">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="IncidentPerson_HealthAndSafetyIncidents"
+      Association="IncidentPerson_HealthAndSafetyIncident">
+      <AssociationSetEnd
+        Name="IncidentPerson"
+        EntitySet="IncidentPersons" />
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet
+      Name="IncidentWitness_HealthAndSafetyIncidents"
+      Association="IncidentWitness_HealthAndSafetyIncident">
+      <AssociationSetEnd
+        Name="IncidentWitness"
+        EntitySet="IncidentWitnesses" />
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet
+      Name="IncidentStatus_HealthAndSafetyIncidents"
+      Association="IncidentStatus_HealthAndSafetyIncident">
+      <AssociationSetEnd
+        Name="IncidentStatus"
+        EntitySet="IncidentStatuses" />
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <QueryOperation
+      Name="IncidentsReportedToMe"
+      ReturnType="HealthAndSafetyIncident*">
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperation.SortCriteria>
+        <SortCriterion
+          Direction="Descending">
+          <ChainExpression>
+            <MemberExpression
+              Member="IncidentDate" />
+          </ChainExpression>
+        </SortCriterion>
+      </QueryOperation.SortCriteria>
+    </QueryOperation>
+    <QueryOperation
+      Name="IncidentsThisMonth"
+      ReturnType="HealthAndSafetyIncident*">
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+    <QueryOperation
+      Name="OpenIncidents"
+      ReturnType="HealthAndSafetyIncident*">
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+    <QueryOperation
+      Name="ReverseOrderedIncidents"
+      ReturnType="HealthAndSafetyIncident*">
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperation.SortCriteria>
+        <SortCriterion
+          Direction="Descending">
+          <ChainExpression>
+            <MemberExpression
+              Member="IncidentDate" />
+          </ChainExpression>
+        </SortCriterion>
+      </QueryOperation.SortCriteria>
+    </QueryOperation>
+    <EntitySet
+      Name="IncidentOutcomes"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="IncidentOutcome" />
+    <QueryOperation
+      Name="IncidentOutcomes_Single"
+      ReturnType="IncidentOutcome">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentOutcomes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="IncidentOutcomes_SingleOrDefault"
+      ReturnType="IncidentOutcome">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentOutcomes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <EntitySet
+      Name="IncidentPersons"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="IncidentPerson" />
+    <QueryOperation
+      Name="IncidentPersons_Single"
+      ReturnType="IncidentPerson">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentPersons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="IncidentPersons_SingleOrDefault"
+      ReturnType="IncidentPerson">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentPersons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="IncidentOutcome_IncidentPersons"
+      Association="IncidentOutcome_IncidentPerson">
+      <AssociationSetEnd
+        Name="IncidentOutcome"
+        EntitySet="IncidentOutcomes" />
+      <AssociationSetEnd
+        Name="IncidentPerson"
+        EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <QueryOperation
+      Name="IncidentPersonsThisMonth"
+      ReturnType="IncidentPerson*">
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentPersons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+    <EntitySet
+      Name="IncidentStatuses"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="IncidentStatus" />
+    <QueryOperation
+      Name="IncidentStatuses_Single"
+      ReturnType="IncidentStatus">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentStatuses" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="IncidentStatuses_SingleOrDefault"
+      ReturnType="IncidentStatus">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentStatuses" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <EntitySet
+      Name="IncidentWitnesses"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="IncidentWitness" />
+    <QueryOperation
+      Name="IncidentWitnesses_Single"
+      ReturnType="IncidentWitness">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentWitnesses" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="IncidentWitnesses_SingleOrDefault"
+      ReturnType="IncidentWitness">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="IncidentWitnesses" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <EntitySet
+      Name="InjuryTypes"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="InjuryType" />
+    <QueryOperation
+      Name="InjuryTypes_Single"
+      ReturnType="InjuryType">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="InjuryTypes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="InjuryTypes_SingleOrDefault"
+      ReturnType="InjuryType">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="InjuryTypes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="InjuryType_IncidentPersons"
+      Association="InjuryType_IncidentPerson">
+      <AssociationSetEnd
+        Name="InjuryType"
+        EntitySet="InjuryTypes" />
+      <AssociationSetEnd
+        Name="IncidentPerson"
+        EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <EntitySet
+      Name="PersonTypes"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="PersonType" />
+    <QueryOperation
+      Name="PersonTypes_Single"
+      ReturnType="PersonType">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="PersonTypes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="PersonTypes_SingleOrDefault"
+      ReturnType="PersonType">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="PersonTypes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="IncidentPerson_PersonTypes"
+      Association="IncidentPerson_PersonType">
+      <AssociationSetEnd
+        Name="IncidentPerson"
+        EntitySet="IncidentPersons" />
+      <AssociationSetEnd
+        Name="PersonType"
+        EntitySet="PersonTypes" />
+    </AssociationSet>
+    <AssociationSet
+      Name="IncidentWitness_PersonTypes"
+      Association="IncidentWitness_PersonType">
+      <AssociationSetEnd
+        Name="IncidentWitness"
+        EntitySet="IncidentWitnesses" />
+      <AssociationSetEnd
+        Name="PersonType"
+        EntitySet="PersonTypes" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="HealthAndSafetyIncident_Employee">
+    <AssociationEnd
+      Name="HealthAndSafetyIncident"
+      Multiplicity="Many"
+      EntityType="HealthAndSafetyIncident" />
+    <AssociationEnd
+      Name="Employee"
+      Multiplicity="One"
+      EntityType="Employee">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="HealthAndSafetyIncident_Employee1">
+    <AssociationEnd
+      Name="HealthAndSafetyIncident"
+      Multiplicity="Many"
+      EntityType="HealthAndSafetyIncident" />
+    <AssociationEnd
+      Name="Employee"
+      Multiplicity="One"
+      EntityType="Employee">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="IncidentPerson_HealthAndSafetyIncident">
+    <AssociationEnd
+      Name="IncidentPerson"
+      Multiplicity="Many"
+      EntityType="IncidentPerson" />
+    <AssociationEnd
+      Name="HealthAndSafetyIncident"
+      Multiplicity="One"
+      EntityType="HealthAndSafetyIncident">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="IncidentWitness_HealthAndSafetyIncident">
+    <AssociationEnd
+      Name="IncidentWitness"
+      Multiplicity="Many"
+      EntityType="IncidentWitness" />
+    <AssociationEnd
+      Name="HealthAndSafetyIncident"
+      Multiplicity="One"
+      EntityType="HealthAndSafetyIncident">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="IncidentOutcome_IncidentPerson">
+    <AssociationEnd
+      Name="IncidentOutcome"
+      Multiplicity="One"
+      EntityType="IncidentOutcome">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="IncidentPerson"
+      Multiplicity="Many"
+      EntityType="IncidentPerson" />
+  </Association>
+  <Association
+    Name="IncidentStatus_HealthAndSafetyIncident">
+    <AssociationEnd
+      Name="IncidentStatus"
+      Multiplicity="One"
+      EntityType="IncidentStatus">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="HealthAndSafetyIncident"
+      Multiplicity="Many"
+      EntityType="HealthAndSafetyIncident" />
+  </Association>
+  <Association
+    Name="InjuryType_IncidentPerson">
+    <AssociationEnd
+      Name="InjuryType"
+      Multiplicity="One"
+      EntityType="InjuryType">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="IncidentPerson"
+      Multiplicity="Many"
+      EntityType="IncidentPerson" />
+  </Association>
+  <Association
+    Name="IncidentPerson_PersonType">
+    <AssociationEnd
+      Name="IncidentPerson"
+      Multiplicity="Many"
+      EntityType="IncidentPerson" />
+    <AssociationEnd
+      Name="PersonType"
+      Multiplicity="One"
+      EntityType="PersonType">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="IncidentWitness_PersonType">
+    <AssociationEnd
+      Name="IncidentWitness"
+      Multiplicity="Many"
+      EntityType="IncidentWitness" />
+    <AssociationEnd
+      Name="PersonType"
+      Multiplicity="One"
+      EntityType="PersonType">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Application.NavigationItems>
+    <ApplicationNavigationGroup
+      Name="Tasks">
+      <ApplicationNavigationGroup.Attributes>
+        <DisplayName
+          Value="Tasks" />
+      </ApplicationNavigationGroup.Attributes>
+    </ApplicationNavigationGroup>
+    <ApplicationNavigationGroup
+      Name="Administration">
+      <ApplicationNavigationGroup.Attributes>
+        <DisplayName
+          Value="Administration" />
+      </ApplicationNavigationGroup.Attributes>
+      <ApplicationNavigationLink
+        Name="RolesScreen"
+        Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowRolesScreen]" />
+      <ApplicationNavigationLink
+        Name="UsersScreen"
+        Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowUsersScreen]" />
+    </ApplicationNavigationGroup>
+  </Application.NavigationItems>
+</Application>

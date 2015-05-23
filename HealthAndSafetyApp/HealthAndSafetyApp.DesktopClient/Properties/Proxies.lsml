@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
+  Name="LightSwitchApplication.HealthAndSafetyApp.DesktopClient" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <Application.Attributes>
+    <Partial />
+  </Application.Attributes>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Employee" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:HealthAndSafetyIncident" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentOutcome" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentPerson" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentStatus" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentWitness" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:InjuryType" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:PersonType" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Proxy
+        Target="ServiceInterface:ApplicationData" />
+    </EntityContainer.Attributes>
+  </EntityContainer>
+  <Association
+    Name="HealthAndSafetyIncident_Employee">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:HealthAndSafetyIncident_Employee" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="HealthAndSafetyIncident_Employee1">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:HealthAndSafetyIncident_Employee1" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="IncidentPerson_HealthAndSafetyIncident">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentPerson_HealthAndSafetyIncident" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="IncidentWitness_HealthAndSafetyIncident">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentWitness_HealthAndSafetyIncident" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="IncidentOutcome_IncidentPerson">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentOutcome_IncidentPerson" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="IncidentStatus_HealthAndSafetyIncident">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentStatus_HealthAndSafetyIncident" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="InjuryType_IncidentPerson">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:InjuryType_IncidentPerson" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="IncidentPerson_PersonType">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentPerson_PersonType" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="IncidentWitness_PersonType">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:IncidentWitness_PersonType" />
+    </Association.Attributes>
+  </Association>
+</Application>

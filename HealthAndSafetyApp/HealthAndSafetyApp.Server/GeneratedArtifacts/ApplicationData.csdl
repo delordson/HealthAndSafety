@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="50" />
+    <Property Name="Current" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="HealthAndSafetyIncidents" Relationship="LightSwitchApplication.HealthAndSafetyIncident_Employee" ToRole="HealthAndSafetyIncident" FromRole="Employee" />
+    <NavigationProperty Name="ReportedByHealthAndSafetyIncidents" Relationship="LightSwitchApplication.HealthAndSafetyIncident_Employee1" ToRole="HealthAndSafetyIncident" FromRole="Employee" />
+  </EntityType>
+  <EntityType Name="HealthAndSafetyIncident">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reference" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="HealthAndSafetyIncident_Employee1" Type="Edm.Int32" Nullable="false" />
+    <Property Name="IncidentDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="IncidentDescription" Type="Edm.String" MaxLength="255" />
+    <Property Name="IncidentStatus_HealthAndSafetyIncident" Type="Edm.Int32" Nullable="false" />
+    <Property Name="HappenedAtWork" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="PersonsInjured" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="HealthAndSafetyIncident_Employee" Type="Edm.Int32" Nullable="false" />
+    <Property Name="TargetInvestigationDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="IncidentLocation" Type="Edm.String" MaxLength="255" />
+    <Property Name="DateReported" Type="Edm.DateTime" />
+    <Property Name="AdditionalComments" Type="Edm.String" MaxLength="Max" />
+    <Property Name="ImmediateAction" Type="Edm.String" MaxLength="Max" />
+    <Property Name="InvestigationStart" Type="Edm.DateTime" />
+    <Property Name="RootCauseIdentified" Type="Edm.String" MaxLength="Max" />
+    <Property Name="PreventativeAction" Type="Edm.String" MaxLength="Max" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ReportedBy" Relationship="LightSwitchApplication.HealthAndSafetyIncident_Employee1" ToRole="Employee" FromRole="HealthAndSafetyIncident" />
+    <NavigationProperty Name="IncidentStatus" Relationship="LightSwitchApplication.IncidentStatus_HealthAndSafetyIncident" ToRole="IncidentStatus" FromRole="HealthAndSafetyIncident" />
+    <NavigationProperty Name="IncidentWitnesses" Relationship="LightSwitchApplication.IncidentWitness_HealthAndSafetyIncident" ToRole="IncidentWitness" FromRole="HealthAndSafetyIncident" />
+    <NavigationProperty Name="ReportedTo" Relationship="LightSwitchApplication.HealthAndSafetyIncident_Employee" ToRole="Employee" FromRole="HealthAndSafetyIncident" />
+    <NavigationProperty Name="IncidentPersons" Relationship="LightSwitchApplication.IncidentPerson_HealthAndSafetyIncident" ToRole="IncidentPerson" FromRole="HealthAndSafetyIncident" />
+  </EntityType>
+  <EntityType Name="IncidentOutcome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Outcome" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="IncidentPerson" Relationship="LightSwitchApplication.IncidentOutcome_IncidentPerson" ToRole="IncidentPerson" FromRole="IncidentOutcome" />
+  </EntityType>
+  <EntityType Name="IncidentPerson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IncidentPersonSurname" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="IncidentPersonForename" Type="Edm.String" MaxLength="255" />
+    <Property Name="Occupation" Type="Edm.String" MaxLength="255" />
+    <Property Name="IncidentPerson_PersonType" Type="Edm.Int32" Nullable="false" />
+    <Property Name="InjuryType_IncidentPerson" Type="Edm.Int32" Nullable="false" />
+    <Property Name="IncidentOutcome_IncidentPerson" Type="Edm.Int32" Nullable="false" />
+    <Property Name="WorkDaysLost" Type="Edm.Int32" Nullable="false" />
+    <Property Name="IncidentPerson_HealthAndSafetyIncident" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="PersonType" Relationship="LightSwitchApplication.IncidentPerson_PersonType" ToRole="PersonType" FromRole="IncidentPerson" />
+    <NavigationProperty Name="InjuryType" Relationship="LightSwitchApplication.InjuryType_IncidentPerson" ToRole="InjuryType" FromRole="IncidentPerson" />
+    <NavigationProperty Name="IncidentOutcomes" Relationship="LightSwitchApplication.IncidentOutcome_IncidentPerson" ToRole="IncidentOutcome" FromRole="IncidentPerson" />
+    <NavigationProperty Name="HealthAndSafetyIncident" Relationship="LightSwitchApplication.IncidentPerson_HealthAndSafetyIncident" ToRole="HealthAndSafetyIncident" FromRole="IncidentPerson" />
+  </EntityType>
+  <EntityType Name="IncidentStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="StatusType" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="HealthAndSafetyIncident" Relationship="LightSwitchApplication.IncidentStatus_HealthAndSafetyIncident" ToRole="HealthAndSafetyIncident" FromRole="IncidentStatus" />
+  </EntityType>
+  <EntityType Name="IncidentWitness">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Forename" Type="Edm.String" MaxLength="255" />
+    <Property Name="IncidentWitness_PersonType" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Phone" Type="Edm.String" MaxLength="255" />
+    <Property Name="EMail" Type="Edm.String" MaxLength="255" />
+    <Property Name="Statement" Type="Edm.String" MaxLength="255" />
+    <Property Name="StatementDate" Type="Edm.DateTime" />
+    <Property Name="IncidentWitness_HealthAndSafetyIncident" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="PersonType" Relationship="LightSwitchApplication.IncidentWitness_PersonType" ToRole="PersonType" FromRole="IncidentWitness" />
+    <NavigationProperty Name="HealthAndSafetyIncident" Relationship="LightSwitchApplication.IncidentWitness_HealthAndSafetyIncident" ToRole="HealthAndSafetyIncident" FromRole="IncidentWitness" />
+  </EntityType>
+  <EntityType Name="InjuryType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Injury" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="IncidentPersons" Relationship="LightSwitchApplication.InjuryType_IncidentPerson" ToRole="IncidentPerson" FromRole="InjuryType" />
+  </EntityType>
+  <EntityType Name="PersonType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeOfPerson" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="IncidentPersons" Relationship="LightSwitchApplication.IncidentPerson_PersonType" ToRole="IncidentPerson" FromRole="PersonType" />
+    <NavigationProperty Name="IncidentWitnesses" Relationship="LightSwitchApplication.IncidentWitness_PersonType" ToRole="IncidentWitness" FromRole="PersonType" />
+  </EntityType>
+  <Association Name="HealthAndSafetyIncident_Employee">
+    <End Role="Employee" Type="LightSwitchApplication.Employee" Multiplicity="1" />
+    <End Role="HealthAndSafetyIncident" Type="LightSwitchApplication.HealthAndSafetyIncident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HealthAndSafetyIncident">
+        <PropertyRef Name="HealthAndSafetyIncident_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HealthAndSafetyIncident_Employee1">
+    <End Role="Employee" Type="LightSwitchApplication.Employee" Multiplicity="1" />
+    <End Role="HealthAndSafetyIncident" Type="LightSwitchApplication.HealthAndSafetyIncident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HealthAndSafetyIncident">
+        <PropertyRef Name="HealthAndSafetyIncident_Employee1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentPerson_HealthAndSafetyIncident">
+    <End Role="HealthAndSafetyIncident" Type="LightSwitchApplication.HealthAndSafetyIncident" Multiplicity="1" />
+    <End Role="IncidentPerson" Type="LightSwitchApplication.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthAndSafetyIncident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="IncidentPerson_HealthAndSafetyIncident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentWitness_HealthAndSafetyIncident">
+    <End Role="HealthAndSafetyIncident" Type="LightSwitchApplication.HealthAndSafetyIncident" Multiplicity="1" />
+    <End Role="IncidentWitness" Type="LightSwitchApplication.IncidentWitness" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthAndSafetyIncident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentWitness">
+        <PropertyRef Name="IncidentWitness_HealthAndSafetyIncident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentStatus_HealthAndSafetyIncident">
+    <End Role="IncidentStatus" Type="LightSwitchApplication.IncidentStatus" Multiplicity="1" />
+    <End Role="HealthAndSafetyIncident" Type="LightSwitchApplication.HealthAndSafetyIncident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncidentStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HealthAndSafetyIncident">
+        <PropertyRef Name="IncidentStatus_HealthAndSafetyIncident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentOutcome_IncidentPerson">
+    <End Role="IncidentOutcome" Type="LightSwitchApplication.IncidentOutcome" Multiplicity="1" />
+    <End Role="IncidentPerson" Type="LightSwitchApplication.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncidentOutcome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="IncidentOutcome_IncidentPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InjuryType_IncidentPerson">
+    <End Role="InjuryType" Type="LightSwitchApplication.InjuryType" Multiplicity="1" />
+    <End Role="IncidentPerson" Type="LightSwitchApplication.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InjuryType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="InjuryType_IncidentPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentPerson_PersonType">
+    <End Role="PersonType" Type="LightSwitchApplication.PersonType" Multiplicity="1" />
+    <End Role="IncidentPerson" Type="LightSwitchApplication.IncidentPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentPerson">
+        <PropertyRef Name="IncidentPerson_PersonType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncidentWitness_PersonType">
+    <End Role="PersonType" Type="LightSwitchApplication.PersonType" Multiplicity="1" />
+    <End Role="IncidentWitness" Type="LightSwitchApplication.IncidentWitness" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncidentWitness">
+        <PropertyRef Name="IncidentWitness_PersonType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApplicationData" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="Employees" EntityType="LightSwitchApplication.Employee" />
+    <EntitySet Name="HealthAndSafetyIncidents" EntityType="LightSwitchApplication.HealthAndSafetyIncident" />
+    <EntitySet Name="IncidentOutcomes" EntityType="LightSwitchApplication.IncidentOutcome" />
+    <EntitySet Name="IncidentPersons" EntityType="LightSwitchApplication.IncidentPerson" />
+    <EntitySet Name="IncidentStatuses" EntityType="LightSwitchApplication.IncidentStatus" />
+    <EntitySet Name="IncidentWitnesses" EntityType="LightSwitchApplication.IncidentWitness" />
+    <EntitySet Name="InjuryTypes" EntityType="LightSwitchApplication.InjuryType" />
+    <EntitySet Name="PersonTypes" EntityType="LightSwitchApplication.PersonType" />
+    <AssociationSet Name="HealthAndSafetyIncident_Employee" Association="LightSwitchApplication.HealthAndSafetyIncident_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet Name="HealthAndSafetyIncident_Employee1" Association="LightSwitchApplication.HealthAndSafetyIncident_Employee1">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentPerson_HealthAndSafetyIncident" Association="LightSwitchApplication.IncidentPerson_HealthAndSafetyIncident">
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentWitness_HealthAndSafetyIncident" Association="LightSwitchApplication.IncidentWitness_HealthAndSafetyIncident">
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+      <End Role="IncidentWitness" EntitySet="IncidentWitnesses" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentStatus_HealthAndSafetyIncident" Association="LightSwitchApplication.IncidentStatus_HealthAndSafetyIncident">
+      <End Role="IncidentStatus" EntitySet="IncidentStatuses" />
+      <End Role="HealthAndSafetyIncident" EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentOutcome_IncidentPerson" Association="LightSwitchApplication.IncidentOutcome_IncidentPerson">
+      <End Role="IncidentOutcome" EntitySet="IncidentOutcomes" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="InjuryType_IncidentPerson" Association="LightSwitchApplication.InjuryType_IncidentPerson">
+      <End Role="InjuryType" EntitySet="InjuryTypes" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentPerson_PersonType" Association="LightSwitchApplication.IncidentPerson_PersonType">
+      <End Role="PersonType" EntitySet="PersonTypes" />
+      <End Role="IncidentPerson" EntitySet="IncidentPersons" />
+    </AssociationSet>
+    <AssociationSet Name="IncidentWitness_PersonType" Association="LightSwitchApplication.IncidentWitness_PersonType">
+      <End Role="PersonType" EntitySet="PersonTypes" />
+      <End Role="IncidentWitness" EntitySet="IncidentWitnesses" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

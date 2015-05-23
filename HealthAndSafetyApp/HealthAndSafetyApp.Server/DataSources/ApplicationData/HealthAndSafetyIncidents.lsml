@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="HealthAndSafetyIncident">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Reference"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="ReportedBy"
+        Association="HealthAndSafetyIncident_Employee1"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="Employee" />
+      <EntityProperty
+        Name="IncidentDate"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="IncidentDescription"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="IncidentStatus"
+        Association="IncidentStatus_HealthAndSafetyIncident"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="IncidentStatus" />
+      <EntityProperty
+        Name="HappenedAtWork"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="PersonsInjured"
+        PropertyType=":Boolean">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="IncidentWitnesses"
+        Association="IncidentWitness_HealthAndSafetyIncident"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="IncidentWitness" />
+      <NavigationProperty
+        Name="ReportedTo"
+        Association="HealthAndSafetyIncident_Employee"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="Employee" />
+      <EntityProperty
+        Name="TargetInvestigationDate"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="IncidentLocation"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="DateReported"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="AdditionalComments"
+        PropertyType=":String?" />
+      <EntityProperty
+        Name="ImmediateAction"
+        PropertyType=":String?" />
+      <NavigationProperty
+        Name="IncidentPersons"
+        Association="IncidentPerson_HealthAndSafetyIncident"
+        FromEnd="HealthAndSafetyIncident"
+        ToEnd="IncidentPerson" />
+      <EntityProperty
+        Name="InvestigationStart"
+        PropertyType=":Date?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RootCauseIdentified"
+        PropertyType=":String?" />
+      <EntityProperty
+        Name="PreventativeAction"
+        PropertyType=":String?" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="HealthAndSafetyIncidents"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="HealthAndSafetyIncident" />
+    <QueryOperation
+      Name="HealthAndSafetyIncidents_Single"
+      ReturnType="HealthAndSafetyIncident">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="HealthAndSafetyIncidents_SingleOrDefault"
+      ReturnType="HealthAndSafetyIncident">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="HealthAndSafetyIncidents" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="IncidentPerson_HealthAndSafetyIncidents"
+      Association="IncidentPerson_HealthAndSafetyIncident">
+      <AssociationSetEnd
+        Name="IncidentPerson"
+        EntitySet="IncidentPersons" />
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet
+      Name="IncidentWitness_HealthAndSafetyIncidents"
+      Association="IncidentWitness_HealthAndSafetyIncident">
+      <AssociationSetEnd
+        Name="IncidentWitness"
+        EntitySet="IncidentWitnesses" />
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+    <AssociationSet
+      Name="IncidentStatus_HealthAndSafetyIncidents"
+      Association="IncidentStatus_HealthAndSafetyIncident">
+      <AssociationSetEnd
+        Name="IncidentStatus"
+        EntitySet="IncidentStatuses" />
+      <AssociationSetEnd
+        Name="HealthAndSafetyIncident"
+        EntitySet="HealthAndSafetyIncidents" />
+    </AssociationSet>
+  </EntityContainer>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="HealthAndSafetyIncidents">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="HealthAndSafetyIncident_Employee"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="IncidentStatus_HealthAndSafetyIncident"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="HealthAndSafetyIncident_Employee1"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="IncidentPerson_HealthAndSafetyIncidents">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="IncidentPerson_HealthAndSafetyIncidents" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[IncidentPerson_HealthAndSafetyIncidents]/Members[IncidentPerson]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="IncidentPerson_HealthAndSafetyIncident" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[IncidentPerson_HealthAndSafetyIncidents]/Members[HealthAndSafetyIncident]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="IncidentWitness_HealthAndSafetyIncidents">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="IncidentWitness_HealthAndSafetyIncidents" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[IncidentWitness_HealthAndSafetyIncidents]/Members[IncidentWitness]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="IncidentWitness_HealthAndSafetyIncident" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[IncidentWitness_HealthAndSafetyIncidents]/Members[HealthAndSafetyIncident]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+  <Association
+    Name="IncidentPerson_HealthAndSafetyIncident">
+    <AssociationEnd
+      Name="IncidentPerson"
+      Multiplicity="Many"
+      EntityType="IncidentPerson" />
+    <AssociationEnd
+      Name="HealthAndSafetyIncident"
+      Multiplicity="One"
+      EntityType="HealthAndSafetyIncident">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="IncidentWitness_HealthAndSafetyIncident">
+    <AssociationEnd
+      Name="IncidentWitness"
+      Multiplicity="Many"
+      EntityType="IncidentWitness" />
+    <AssociationEnd
+      Name="HealthAndSafetyIncident"
+      Multiplicity="One"
+      EntityType="HealthAndSafetyIncident">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+</ServiceApplication>
